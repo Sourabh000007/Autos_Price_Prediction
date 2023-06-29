@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autos Car Price Prediction</title>
+    <style>
+        body {
+            
+            background-image: url("https://img.freepik.com/free-vector/futuristic-car-speedometer-gauge-dial_91128-1691.jpg?w=1060&t=st=1684243123~exp=1684243723~hmac=7b201cf518385aab8e73dba27676d0c61ff1185c10dff6ef181cc61cb50eb16d");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffd700;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            font-size: 40px;
+        }
+
+        form {
+            /* rgba(255, 255, 253, 0.8) */
+            background-color: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            margin: auto;
+            width: 60%;
+        }
+
+        label {
+            display: inline-block;
+            color: #c1ad3a;
+            width: 100;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        input[type=text],
+        select {
+            width: 100;
+            padding: 12px 20px;
+            margin: 8px 0;
+            border: none;
+            outline: none;
+            border-bottom: 2px solid #fff;
+            box-sizing: border-box;
+            font-size: 20px;
+            background: transparent;
+            color: #fc6102;
+        }
+
+        input[type=int],
+        select {
+            width: 100;
+            padding: 12px 20px;
+            margin: 8px 0;
+            border: none;
+            outline: none;
+            border-bottom: 2px solid #884f4f;
+            box-sizing: border-box;
+            font-size: 20px;
+            background: transparent;
+            color: #fc6102;
+        }
+    
+        input[type=submit] {
+            width: 100%;
+            height: 50px;
+            border: none;
+            outline: none;
+            border-radius: 50px;
+            background-color: #fc6102;
+            color: black;
+            font-size: lem;
+            font-weight: 600;
+            padding: 14px 20px;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: whitesmoke;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 30px;
+            font-weight: bold;
+            font-size: 24px;
+            color: #ffd700;
+        }
+
+
+
+
+        
+    </style>
+</head>
+<body>
+    <h1> Autos Car Price Prediction </h1>
+
+    <form method="GET" action="/predict_price">
+
+        <label for="symboling">Symboling:</label>
+        <select type="symboling" name="symboling" id="symboling" >  
+            <option value = "-2">-2</option>
+            <option value = "-1">-1</option>
+            <option value = "0">0</option>
+            <option value = "1">1</option>
+            <option value = "2">2</option>
+        </select>
+
+            <label for="normalized_losses">Normalized Losses:</label>        
+            <input type="int" name="normalized_losses" id="normalized_losses" placeholder="eg: (100)">
+
+        <br>
+        <br>
+
+            <label for="fuel_type">Fuel Type:</label>  
+            <select type="fuel_type" name="fuel_type" id="fuel_type">                          
+                <option value = "gas">Gas</option>
+                <option value = "diesel">Diesel</option>
+            </select>
+
+            <label for="aspiration">Aspiration:</label>  
+            <select type="aspiration" name="aspiration" id="aspiration">                            
+                <option value = "std">Std</option>
+                <option value = "turbo">Turbo</option>
+            </select>
+
+            <label for="num_of_doors">Num Of Doors:</label>  
+            <select type="num_of_doors" name="num_of_doors" id="num_of_doors">                            
+                <option value = "two">Two</option>
+                <option value = "four">Four</option>
+            </select>
+
+        <br>
+        <br>
+
+            <label for="drive_wheels">Drive Wheels:</label>  
+            <select type="drive_wheels" name="drive_wheels" id="drive_wheels">                            
+                <option value = "fwd">Fwd</option>
+                <option value = "rwd">Rwd</option>
+                <option value = "4wd">4wd</option>
+            </select>
+
+
+            <label for="engine_location">Engine Location:</label>  
+            <select type="engine_location" name="engine_location" id="engine_location">                            
+                <option value = "front">Front</option>
+                <option value = "rear">Rear</option>
+            </select>
+
+            <label for="wheel_base">Wheel Base:</label>  
+            <input type="int" name="wheel_base" id="wheel_base" placeholder="eg: (50)">                            
+
+        <br>
+        <br>
+
+            <label for="length">Length:</label>  
+            <input type="int" name="length" id="length" placeholder="eg: (100)">
+            
+            
+            <label for="width">Width:</label>  
+            <input type="int" name="width" id="width" placeholder="eg: (50)">      
+
+            <label for="height">Height:</label>  
+            <input type="int" name="height" id="height"placeholder="eg: (50)"> 
+
+        <br>
+        <br>
+
+            <label for="curb_weight">Curb Weight:</label>  
+            <input type="int" name="curb_weight" id="curb_weight" placeholder="eg: (2000)"> 
+
+            <label for="engine_type">Engine Type:</label>  
+            <select type="engine_type" name="engine_type" id="engine_type">                            
+                <option value = "ohc">Ohc</option>
+                <option value = "ohcf">Ohcf</option>
+                <option value = "ohcv">Ohcv</option>
+                <option value = "dohc">Dohc</option>
+                <option value = "rotor">Rotor</option>
+                <option value = "dohcv">Dohcv</option>
+            </select>
+
+            <label for="num_of_cylinders">Num Of Cylinders:</label>  
+            <select type="num_of_cylinders" name="num_of_cylinders" id="num_of_cylinders">                            
+                <option value = "two">Two</option>
+                <option value = "three">Three</option>
+                <option value = "four">Four</option>
+                <option value = "five">Five</option>
+                <option value = "six">Six</option>
+                <option value = "eight">Eight</option>
+                <option value = "twelve">Twelve</option>
+            </select>
+
+        <br>
+        <br>
+
+            <label for="engine_size">Engine Size:</label>  
+            <input type="int" name="engine_size" id="engine_size" placeholder="eg: (100)">         
+
+            <label for="bore">Bore:</label>  
+            <input type="int" name="bore" id="bore" placeholder="eg: (3.00)">
+
+            <label for="stroke">Stroke:</label>  
+            <input type="int" name="stroke" id="stroke" placeholder="eg: (2.5)">
+
+        <br>
+        <br>
+
+            <label for="compression_ratio">Compression Ratio:</label>  
+            <input type="int" name="compression_ratio" id="compression_ratio" placeholder="eg: (9)">
+
+            <label for="horsepower">Horsepower:</label>  
+            <input type="int" name="horsepower" id="horsepower" placeholder="eg: (111)">
+        
+        <br>
+        <br>
+
+            <label for="peak_rpm">Peak Rpm:</label>  
+            <input type="int" name="peak_rpm" id="peak_rpm" placeholder="eg: (5000)">
+
+            <label for="city_mpg">City Mpg:</label>  
+            <input type="int" name="city_mpg" id="city_mpg" placeholder="eg: (30)">
+
+            <label for="highway_mpg">Highway Mpg:</label>  
+            <input type="int" name="highway_mpg" id="highway_mpg" placeholder="eg: (20)">
+
+        <br>
+        <br>
+
+        <label for="make">Make:</label>  
+        <select type="make" name="make" id="make">                            
+            <option value = "mazda">Mazda</option>
+            <option value = "mitsubishi">Mitsubishi</option>
+            <option value = "nissan">Nissan</option>
+            <option value = "peugot">Peugot</option>
+            <option value = "subaru">Subaru</option>
+            <option value = "toyota">Toyota</option>
+            <option value = "volkswagen">Volkswagen</option>
+            <option value = "volvo">Volvo</option>
+            <option value = "others">Others</option>
+        </select>    
+        
+        <label for="body_style">Body Style:</label>  
+        <select type="body_style" name="body_style" id="body_style">                            
+            <option value = "hardtop">Hardtop</option>
+            <option value = "hatchback">Hatchback</option>
+            <option value = "sedan">Sedan</option>
+            <option value = "wagon">Wagon</option>
+        </select> 
+
+        <label for="fuel_system">Fuel System:</label>  
+        <select type="fuel_system" name="fuel_system" id="fuel_system">                            
+            <option value = "2bbl">2bbl</option>
+            <option value = "idi">Idi</option>
+            <option value = "mpfi">Mpfi</option>
+            <option value = "others">Others</option>
+        </select>
+
+    <br>
+    <br>
+
+    <input type="submit" value="SUBMIT">
+
+        {% if prediction is not none %}
+        <br>
+        <p>The Total Price of your Car is: <b> $ {{prediction}}/- </b> Only. </p>
+        {% endif %}
+
+    </form>
+
+</body>
+</html>
